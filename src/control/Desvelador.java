@@ -68,7 +68,7 @@ public class Desvelador {
 			}
 		}
 		if (casilla.isMina()) {
-			boton.setText("MINA");
+			boton.setText("MINAcea");
 			boton.setOpaque(true);
 			boton.setBackground(mina);
 			
