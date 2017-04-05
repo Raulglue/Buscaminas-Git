@@ -7,7 +7,7 @@ import control.Varios;
 public class Tablero {
 	private Casilla[][] casillas;
 	boolean minasColocadas= false;
-	int minas = 99;
+	int minas = 20;
 	boolean ganador = false;
 	boolean perdedor = false;
 
