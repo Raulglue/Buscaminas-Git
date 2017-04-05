@@ -2,7 +2,7 @@ package control;
 
 import javax.swing.JButton;
 
-
+import modelo.Casilla;
 import modelo.Coordenada;
 import modelo.Tablero;
 
@@ -21,7 +21,18 @@ public class Varios {
 		return new Coordenada(x,y);
 
 	}
-
+	
+	public Casilla[] convierteMatriz(Casilla [][] casillas){
+		int tamaño = casillas.length* casillas[0].length;
+		Casilla []arrayCasillas = new Casilla [tamaño];
+		for (int i = 0; i < arrayCasillas.length; i++) {
+			Casilla[] filaCoord= casillas[i];
+			for (int j = 0; j < arrayCasillas.length; j++) {
+				arrayCasillas[i*filaCoord.length+j]= casillas[i][j];
+			}
+		}
+		return arrayCasillas;
+	}
 	public Coordenada[] contiguas(int x, int y) {
 		Coordenada[] coordenadas = { new Coordenada(x - 1, y - 1), new Coordenada(x - 1, y),
 				new Coordenada(x - 1, y + 1), new Coordenada(x, y - 1), new Coordenada(x, y + 1),

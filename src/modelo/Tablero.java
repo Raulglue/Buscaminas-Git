@@ -41,35 +41,44 @@ public class Tablero {
 	}
 
 	public void colocarMinas(Tablero tablero, JButton boton) {
-		int i = new Varios().obtenerCoordenada(boton).getX();
-		int j = new Varios().obtenerCoordenada(boton).getY();
+		
 		int contador = 0;
 		int x, y;
 		do {
 			x = (int) Math.floor(Math.random() * tablero.length());
 			y = (int) Math.floor(Math.random() * tablero.length());
-			if (!tablero.getCasilla(new Coordenada(x, y)).isMina() && i != x && j != y) {
+			if (!tablero.getCasilla(new Coordenada(x, y)).isMina()) {
 				tablero.getCasilla(new Coordenada(x, y)).setMina(true);
 				contador++;
 			}
 		} while (contador < minas);
 	}
-
-	public void colocarMinas2(Casilla[][] casillas) {
-		Coordenada tableroArray[]= new Coordenada[casillas.length];
-		for (int i = 0; i < tableroArray.length; i++) {
-			
-			for (int j = 0; j < casillas.length; j++) {
-				
-				for (int k = 0; k < casillas.length; k++) {
-					
-					tableroArray[i]= new Coordenada(j, k);		
-					
-				}
+	
+	private void colocarMinas2(Casilla[][] casillas, JButton boton) {
+		Casilla tableroArray[]= new Varios().convierteMatriz(casillas);
+		for (int i = 0; i < minas; ) {
+			if(colocarUnaMina(tableroArray, boton)){
+				colocarUnaMina(tableroArray, boton);
+				i++;
 			}
 		}
 	}
-
+	private boolean colocarUnaMina(Casilla []casillas, JButton boton){
+		boolean respuesta=false;
+		int posicion = (int) Math.floor(Math.random()* casillas.length);
+		
+		casillas[posicion].setMina(true);
+		
+		return respuesta;
+	}
+	private void borraPosicion(Casilla[]casillas, int posicion){
+		Casilla [] arrayNuevo=new Casilla[ casillas.length-1];
+		for (int i = 0; i < casillas.length; i++) {
+			if(i!=posicion){
+				
+			}
+		}
+	}
 	private void generarTablero(int filas, int columnas) {
 		casillas = new Casilla[filas][columnas];
 		for (int i = 0; i < casillas.length; i++) {
