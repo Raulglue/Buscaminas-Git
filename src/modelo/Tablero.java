@@ -6,6 +6,7 @@ import control.Varios;
 
 public class Tablero {
 	//Esto es una prueba para el segundo pullRequest
+	//ME DEBES SUMISION, ESQUIROL
 	private Casilla[][] casillas;
 	boolean minasColocadas= false;
 	int minas = 20;
