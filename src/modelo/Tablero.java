@@ -5,11 +5,9 @@ import javax.swing.JButton;
 import control.Varios;
 
 public class Tablero {
-	//Esto es una prueba para el segundo pullRequest
-	//ME DEBES SUMISION, ESQUIROL
 	private Casilla[][] casillas;
-	boolean minasColocadas= false;
-	int minas = 20;
+	boolean minasColocadas = false;
+	int minas = 8;
 	boolean ganador = false;
 	boolean perdedor = false;
 
@@ -42,16 +40,34 @@ public class Tablero {
 		this(cuadrada, cuadrada);
 	}
 
-	public void colocarMinas(Tablero tablero) {
+	public void colocarMinas(Tablero tablero, JButton boton) {
+		int i = new Varios().obtenerCoordenada(boton).getX();
+		int j = new Varios().obtenerCoordenada(boton).getY();
 		int contador = 0;
 		int x, y;
 		do {
 			x = (int) Math.floor(Math.random() * tablero.length());
 			y = (int) Math.floor(Math.random() * tablero.length());
-			if(!tablero.getCasilla(new Coordenada(x, y)).isMina()){
+			if (!tablero.getCasilla(new Coordenada(x, y)).isMina() && i != x && j != y) {
 				tablero.getCasilla(new Coordenada(x, y)).setMina(true);
-				contador++;}
+				contador++;
+			}
 		} while (contador < minas);
+	}
+
+	public void colocarMinas2(Casilla[][] casillas) {
+		Coordenada tableroArray[]= new Coordenada[casillas.length];
+		for (int i = 0; i < tableroArray.length; i++) {
+			
+			for (int j = 0; j < casillas.length; j++) {
+				
+				for (int k = 0; k < casillas.length; k++) {
+					
+					tableroArray[i]= new Coordenada(j, k);		
+					
+				}
+			}
+		}
 	}
 
 	private void generarTablero(int filas, int columnas) {
@@ -61,7 +77,7 @@ public class Tablero {
 				casillas[i][j] = new Casilla();
 			}
 		}
-		
+
 	}
 
 	public void contadorMinas(Tablero tablero) {

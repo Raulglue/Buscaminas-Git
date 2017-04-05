@@ -18,7 +18,7 @@ import java.awt.GridLayout;
 public class UIbusqui extends JFrame {
 
 	protected JPanel contentPane;
-	private int tamaño=10;
+	private int tamaño=3;
 	protected JButton[][] botonera = new JButton[tamaño][tamaño];
 	protected JLabel lblBuscaminah;
 
@@ -26,9 +26,11 @@ public class UIbusqui extends JFrame {
 	 * Create the frame.
 	 */
 	public UIbusqui() {
-		setMinimumSize(new Dimension(1300,1000));
+		setPreferredSize(new Dimension(1300, 1000));
+		setSize(new Dimension(1300, 1000));
+		setMinimumSize(new Dimension(700, 500));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 547, 442);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
