@@ -63,6 +63,7 @@ public class Tablero {
 				i++;
 				tableroArray = new Varios().borraPosicion(tableroArray);
 
+				
 			}
 
 		}
