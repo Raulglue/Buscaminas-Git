@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import control.Varios;
 
 public class Tablero {
+
 	private Casilla[][] casillas;
 	boolean minasColocadas = false;
 	int minas = 24;
