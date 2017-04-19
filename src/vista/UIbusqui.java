@@ -18,7 +18,7 @@ import java.awt.GridLayout;
 public class UIbusqui extends JFrame {
 
 	protected JPanel contentPane;
-	private int tamaño=10;
+	private int tamaño=5;
 	protected JButton[][] botonera = new JButton[tamaño][tamaño];
 	protected JLabel lblBuscaminah;
 

@@ -68,7 +68,7 @@ public class Desvelador {
 			}
 		}
 		if (casilla.isMina()) {
-			boton.setText("MINAcea");
+			boton.setText("MINA");
 			boton.setOpaque(true);
 			boton.setBackground(mina);
 			
@@ -78,7 +78,6 @@ public class Desvelador {
 	public void desvelarCasilla(JButton boton, Tablero tablero, JButton[][] botonera) {
 		Coordenada coordenadaActual = new Varios().obtenerCoordenada(boton);
 		Casilla casillaActual = tablero.getCasilla(coordenadaActual);
-		// tablero.cuentaBanderas(tablero, boton);
 
 		if (casillaActual.isVelada() && !tablero.getCasilla(coordenadaActual).isMarcada()) {
 			
@@ -99,7 +98,7 @@ public class Desvelador {
 		if(!casillaActual.isVelada()){
 			tablero.contadorBanderas(tablero, boton);
 			Coordenada[] contiguas = new Varios().contiguas(coordenadaActual.getX(), coordenadaActual.getY());
-			Coordenada[] ContiguasValidadas = new Varios().validaContiguas(contiguas, tablero.length());
+			Coordenada[] ContiguasValidadas = new Varios().validaContiguas(contiguas, tablero.length()-1);
 			if(tablero.getCasilla(coordenadaActual).getBanderaCercanas()==tablero.getCasilla(coordenadaActual).getMinasCercanas()){
 				for (int i = 0; i < ContiguasValidadas.length; i++) {
 

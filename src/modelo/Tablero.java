@@ -7,7 +7,7 @@ import control.Varios;
 public class Tablero {
 	private Casilla[][] casillas;
 	boolean minasColocadas = false;
-	int minas = 8;
+	int minas = 24;
 	boolean ganador = false;
 	boolean perdedor = false;
 
@@ -40,8 +40,8 @@ public class Tablero {
 		this(cuadrada, cuadrada);
 	}
 
-	public void colocarMinas(Tablero tablero, JButton boton) {
-		
+	public void colocarMinas2(Tablero tablero, JButton boton) {
+
 		int contador = 0;
 		int x, y;
 		do {
@@ -53,32 +53,32 @@ public class Tablero {
 			}
 		} while (contador < minas);
 	}
-	
-	private void colocarMinas2(Casilla[][] casillas, JButton boton) {
-		Casilla tableroArray[]= new Varios().convierteMatriz(casillas);
-		for (int i = 0; i < minas; ) {
-			if(colocarUnaMina(tableroArray, boton)){
-				colocarUnaMina(tableroArray, boton);
+
+	public void colocarMinas(JButton boton) {
+		Casilla tableroArray[] = new Varios().convierteMatriz(casillas);
+		tableroArray= new Varios().quitaPosicion(tableroArray, boton, casillas.length);
+		for (int i = 0; i < minas ;) {
+			boolean respuesta = colocarUnaMina(tableroArray, boton);
+			if (respuesta) {
 				i++;
+				tableroArray = new Varios().borraPosicion(tableroArray);
+
 			}
+
 		}
 	}
-	private boolean colocarUnaMina(Casilla []casillas, JButton boton){
-		boolean respuesta=false;
-		int posicion = (int) Math.floor(Math.random()* casillas.length);
-		
-		casillas[posicion].setMina(true);
-		
+
+	private boolean colocarUnaMina(Casilla[] casillas, JButton boton) {
+		boolean respuesta = false;
+		int posicion = (int) Math.floor(Math.random() * casillas.length);
+		if (!casillas[posicion].isMina()) {
+			casillas[posicion].setMina(true);
+			respuesta = true;
+		}
+
 		return respuesta;
 	}
-	private void borraPosicion(Casilla[]casillas, int posicion){
-		Casilla [] arrayNuevo=new Casilla[ casillas.length-1];
-		for (int i = 0; i < casillas.length; i++) {
-			if(i!=posicion){
-				
-			}
-		}
-	}
+
 	private void generarTablero(int filas, int columnas) {
 		casillas = new Casilla[filas][columnas];
 		for (int i = 0; i < casillas.length; i++) {

@@ -30,7 +30,7 @@ public class ParaUIBusqui extends UIbusqui {
 				botonera[i][j].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						if (!tablero.isMinasColocadas()) {
-							tablero.colocarMinas(tablero, (JButton)arg0.getSource());
+							tablero.colocarMinas( (JButton)arg0.getSource());
 							tablero.contadorMinas(tablero);
 							tablero.setMinasColocadas(true);
 						}
